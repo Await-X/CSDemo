@@ -1,0 +1,112 @@
+//
+//  PrefixHeader.pch
+//  CSDemo
+//
+//  Created by apple on 2020/5/21.
+//  Copyright © 2020 CS. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+// 
+#import <Masonry.h>
+
+// 字符串 处理
+#import "XPFStrNil.h"
+
+// 悬浮
+#import <JXPagingView/JXPagerView.h>
+#import <JXCategoryView.h>
+
+// 选择视频照片gif等
+#import "XG_AssetPickerController.h"
+
+// 随机颜色
+#import "UIColor+XPFRandomColor.h"
+#import "UIColor+XPF.h"
+
+//
+#import "DateTool.h"
+
+#import "XPFDarkMode.h"
+#import "DarkPink.h"
+
+#import "XPFPlaySystemRing.h"
+
+///
+#import "HXPhotoPicker.h" // 选择照片
+
+// ----------------------
+
+#define ColorRGBA(r, g, b, a) [UIColor colorWithRed:(r / 255.0) green:(g / 255.0) blue:(b / 255.0) alpha:a]
+#define ColorRGB(r, g, b)     GKColorRGBA(r, g, b, 1.0)
+#define ColorGray(v)          GKColorRGB(v, v, v)
+
+// 适配的宽
+#define XW [UIScreen mainScreen].bounds.size.width
+#define XW_value(value) ((value)/375.0f * XW)
+// 适配的高
+#define XH [UIScreen mainScreen].bounds.size.height
+#define XH(value) ((value)/667.0f * XH)
+
+#define XPFFONT(frontSize)      [UIFont systemFontOfSize:frontSize * RATIO]
+#define XPFBOLDFONT(frontSize)  [UIFont boldSystemFontOfSize:frontSize * RATIO]
+
+#define SCREEN_WIDTH  ([[UIScreen mainScreen] bounds].size.width)
+#define SH  ([[UIScreen mainScreen] bounds].size.height)
+
+#define SW  ([[UIScreen mainScreen] bounds].size.width)
+#define SH  ([[UIScreen mainScreen] bounds].size.height)
+#define RATIO  (SW/375)
+#define RATIOA(a)  (SW/375) * a
+#define YGIMGName(name)  [UIImage imageNamed:name]
+
+
+#define WeakSelf    __weak __typeof(self)weakSelf = self
+// ----------------------
+
+/** log... */
+#ifdef DEBUG
+//#define XPFLog(fmt, ...) NSLog((@"[函数名:%s]" "[行号:%d]" fmt),__FUNCTION__, __LINE__, ##__VA_ARGS__)
+#define XPFLog(format, ...) printf("class: <%p %s:(%d) > method: %s \n%s\n", self, [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, [[NSString stringWithFormat:(format), ##__VA_ARGS__] UTF8String])
+#else
+#define XPFLog(...)
+#endif
+
+
+#define aaaa     1
+
+#if aaaa == 0
+#define aaaaaaaaAS @" aaa = 0"
+#elif (aaaa == 1)
+#define aaaaaaaaAS @" aaa = 1"
+#elif (aaaa == 2)
+#define aaaaaaaaAS @" aaa = 2"
+#endif
+
+
+// ----------------------
+
+#define KHideVersion            @"VersionHide"
+/// 存储
+#define UserDef_setboolforkey(y, k)  [[NSUserDefaults standardUserDefaults] setBool:y forKey:k];
+/// 读取
+#define UserDef_boolforkey(k)  [[NSUserDefaults standardUserDefaults] boolForKey:k];
+
+// ----------------------
+ 
+
+/// block分类
+typedef void(^IndexBlock)   (NSInteger index);
+typedef void(^VoidBlock)    (void);
+typedef void(^ObjBlock)     (id obj);
+typedef void(^BoolBlock)    (BOOL value);
+
+// ----------------------
+
+
+#endif /* PrefixHeader_pch */
